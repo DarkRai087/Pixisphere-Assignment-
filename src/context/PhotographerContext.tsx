@@ -39,12 +39,7 @@ interface State {
 
 interface Action {
   type: string;
-  payload?:
-    | Photographer[]
-    | Photographer
-    | { [key: string]: any }
-    | number
-    | null;
+  payload?: Photographer[] | Photographer | { [key: string]: unknown } | number | null;
 }
 
 const PhotographerContext = createContext<{ state: State; dispatch: React.Dispatch<Action> } | undefined>(undefined);
@@ -90,7 +85,7 @@ function photographerReducer(state: State, action: Action): State {
     case 'SET_FILTERS':
       return {
         ...state,
-        filters: { ...state.filters, ...(action.payload as { [key: string]: any }) },
+        filters: { ...state.filters, ...(action.payload as { [key: string]: unknown }) },
       };
     case 'TOGGLE_FILTERS':
       return {
