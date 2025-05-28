@@ -162,4 +162,10 @@ function CategoryListingPage() {
   );
 }
 
+export async function getServerSideProps() {
+  return {
+    props: {}, // Pass any required props here
+  };
+}
+
 export default CategoryListingPage;
