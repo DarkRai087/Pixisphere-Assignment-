@@ -1,6 +1,7 @@
 import React from 'react';
 import { usePhotographer } from '@/context/PhotographerContext';
 import { Star, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 interface Photographer {
   id: number;
@@ -31,10 +32,12 @@ function PhotographerCard({ photographer }: Props) {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <div className="relative h-48 bg-gray-200">
-        <img
+        <Image
           src={photographer.profilePic}
           alt={photographer.name}
-          className="w-full h-full object-cover"
+          className="w-full h-64 object-cover"
+          width={500}
+          height={500}
         />
         <div className="absolute top-2 right-2 bg-white px-2 py-1 rounded-full text-sm font-semibold flex items-center">
           <Star className="w-3 h-3 fill-yellow-400 text-yellow-400 mr-1" />

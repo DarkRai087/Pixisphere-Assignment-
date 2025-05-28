@@ -3,6 +3,7 @@ import { usePhotographer } from '@/context/PhotographerContext';
 import Gallery from '@/components/Gallery';
 import InquiryForm from '@/components/InquiryForm';
 import { ChevronLeft, MapPin, Star, Send } from 'lucide-react';
+import Image from 'next/image';
 
 function PhotographerProfile() {
   const { state, dispatch } = usePhotographer();
@@ -37,10 +38,12 @@ function PhotographerProfile() {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-6 sticky top-8">
               <div className="text-center mb-6">
-                <img
+                <Image
                   src={selectedPhotographer.profilePic}
                   alt={selectedPhotographer.name}
                   className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                  width={500}
+                  height={500}
                 />
                 <h1 className="text-2xl font-bold text-gray-900 mb-2">
                   {selectedPhotographer.name}

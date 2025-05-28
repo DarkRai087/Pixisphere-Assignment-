@@ -19,7 +19,7 @@ function useDebounce(value: string, delay: number) {
 }
 
 function SearchBar() {
-  const { state, dispatch } = usePhotographer();
+  const { dispatch } = usePhotographer();
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearch = useDebounce(searchTerm, 300);
 

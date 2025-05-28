@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 interface Props {
   images: string[];
@@ -21,10 +22,12 @@ function Gallery({ images }: Props) {
   return (
     <div className="relative">
       <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden">
-        <img
+        <Image
           src={images[currentIndex]}
           alt={`Portfolio ${currentIndex + 1}`}
           className="w-full h-64 object-cover"
+          width={500}
+          height={500}
         />
       </div>
       

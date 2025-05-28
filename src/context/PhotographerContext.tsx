@@ -39,7 +39,12 @@ interface State {
 
 interface Action {
   type: string;
-  payload?: any;
+  payload?:
+    | Photographer[]
+    | Photographer
+    | { [key: string]: any }
+    | number
+    | null;
 }
 
 const PhotographerContext = createContext<{ state: State; dispatch: React.Dispatch<Action> } | undefined>(undefined);
@@ -68,24 +73,24 @@ function photographerReducer(state: State, action: Action): State {
     case 'SET_PHOTOGRAPHERS':
       return {
         ...state,
-        photographers: action.payload,
-        filteredPhotographers: action.payload,
-        loading: false
+        photographers: action.payload as Photographer[],
+        filteredPhotographers: action.payload as Photographer[],
+        loading: false,
       };
     case 'SET_FILTERED_PHOTOGRAPHERS':
       return {
         ...state,
-        filteredPhotographers: action.payload
+        filteredPhotographers: action.payload as Photographer[],
       };
     case 'SET_SELECTED_PHOTOGRAPHER':
       return {
         ...state,
-        selectedPhotographer: action.payload
+        selectedPhotographer: action.payload as Photographer | null,
       };
     case 'SET_FILTERS':
       return {
         ...state,
-        filters: { ...state.filters, ...action.payload }
+        filters: { ...state.filters, ...(action.payload as { [key: string]: any }) },
       };
     case 'TOGGLE_FILTERS':
       return {
@@ -100,7 +105,7 @@ function photographerReducer(state: State, action: Action): State {
     case 'SET_CURRENT_PAGE':
       return {
         ...state,
-        currentPage: action.payload
+        currentPage: action.payload as number,
       };
     default:
       return state;
