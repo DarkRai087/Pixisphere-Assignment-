@@ -161,4 +161,10 @@ function PhotographerProfile() {
   );
 }
 
+export async function getServerSideProps() {
+  return {
+    props: {}, // Pass any required props here
+  };
+}
+
 export default PhotographerProfile;
